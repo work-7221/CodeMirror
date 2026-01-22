@@ -26,8 +26,24 @@ public class Main {
         if (result == JFileChooser.APPROVE_OPTION) {
             File selectedFolder = chooser.getSelectedFile();
             System.out.println("Here's the selected folder: " + selectedFolder.getAbsolutePath());
+
+            // storing the directory for later use.
+            String Path = selectedFolder.getAbsolutePath();
+            File directory = new File(Path);
+
+            File[] list_of_files = directory.listFiles();
+
+            for (File file : list_of_files) {
+                System.out.println("Path of file: " + file.getAbsolutePath());
+            }
+
         } else {
             System.out.println("File Selection Cancelled.");
         }
+        
+        //now getting the hol dof the files in the selected directory
+
+
+
     }
 }
