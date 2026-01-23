@@ -1,9 +1,9 @@
 package CodeMirror;
 
 import javax.swing.*;
-
 import java.io.File;
 import java.io.File.*;
+
 
 
 public class Main {
@@ -30,18 +30,24 @@ public class Main {
             // storing the directory for later use.
             String Path = selectedFolder.getAbsolutePath();
             File directory = new File(Path);
-
+            
             File[] list_of_files = directory.listFiles();
 
+            // Retriever obj = new Retriever();
+
+            
+            //now getting the hold of the files in the selected directory
             for (File file : list_of_files) {
                 System.out.println("Path of file: " + file.getAbsolutePath());
+                String output = Retriever.Extractor(file.getAbsolutePath());
+                
+                System.out.println(output);
             }
 
         } else {
             System.out.println("File Selection Cancelled.");
         }
         
-        //now getting the hol dof the files in the selected directory
 
 
 
