@@ -1,9 +1,11 @@
 package CodeMirror;
 
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.IOException;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.Path;
 
 public class Retriever {
 
@@ -12,19 +14,17 @@ public class Retriever {
     public static String Extractor(String path) {
         //method body
         File file = new File(path);
-        String totality = "";
-        try (Scanner sc = new Scanner(file)) {
+        String file_path_string = file.getAbsolutePath();
 
-            while (sc.hasNextLine()) {
-                totality += sc.next();
-                totality += "\n";
-            } 
+        Path file_path_object = Paths.get(file_path_string);
+        String content = "";
 
-        } catch (FileNotFoundException e) {
-            System.out.println("File not found!");
+        try{
+            content = Files.readString(file_path_object);
+        } catch (IOException e) {
+            System.out.println("Error reading this file: " + e.getMessage());
             e.printStackTrace();
-    }
-        return totality;
-        
+        }
+        return content;
     }
 }
