@@ -26,35 +26,30 @@ public class Main {
             File selectedFolder = chooser.getSelectedFile();
             System.out.println("Here's the selected folder: " + selectedFolder.getAbsolutePath());
 
-            // storing the directory for later use.
+            // storing the directory path for later use.
             String Path = selectedFolder.getAbsolutePath();
-            File directory = new File(Path);
+            File theFolder = new File(Path);
             
-            File[] list_of_files = directory.listFiles();
-
-            // Retriever obj = new Retriever();
+            File[] list_of_files = theFolder.listFiles(); // an array consisting of File instances of the directory where we have stored the files
 
             HashMap<String, String> ERN = new HashMap<>();
             
             //now getting the hold of the files in the selected directory
             for (File file : list_of_files) {
-                System.out.println("Path of file: " + file.getAbsolutePath());
+                // System.out.println("Path of file: " + file.getAbsolutePath());
+                String individual_files = file.getAbsolutePath(); 
                 String output = Retriever.Extractor(file.getAbsolutePath());
                 
-                String individual_files = file.getAbsolutePath(); 
-
-                System.out.println(output);
+                // System.out.println(output);
+                // System.out.println("======SEPARATION======");
+                System.out.println(Tokenizer.tokenizer(output));
                 System.out.println("======SEPARATION======");
                 ERN.put(individual_files, output);
-            }
-            // System.out.println(ERN);
+                // now using tokenizer class to implement tokenization for each of the files in the directory.
 
+            }
         } else {
             System.out.println("File Selection Cancelled.");
         }
-        
-
-
-
     }
 }
