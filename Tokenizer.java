@@ -14,7 +14,7 @@ then we use matcher class to make a matcher objects and then do the further oper
 
 public class Tokenizer {
     public static List<String> tokenizer(String file_content) {
-        String regex = "(\\w+ | \\W+)";
+        String regex = "(\\w+|\\W+)";
         List<String> storing = new ArrayList<>(); 
 
         Pattern pattern_instance = Pattern.compile(regex);
