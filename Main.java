@@ -36,14 +36,13 @@ public class Main {
             
             //now getting the hold of the files in the selected directory
             for (File file : list_of_files) {
-                // System.out.println("Path of file: " + file.getAbsolutePath());
+
                 String individual_files = file.getAbsolutePath(); 
                 String output = Retriever.Extractor(file.getAbsolutePath());
                 
-                // System.out.println(output);
-                // System.out.println("======SEPARATION======");
+
                 System.out.println(Tokenizer.tokenizer(output));
-                System.out.println("======SEPARATION======");
+                System.out.printf("=========================");
                 ERN.put(individual_files, output);
                 // now using tokenizer class to implement tokenization for each of the files in the directory.
 

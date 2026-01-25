@@ -24,6 +24,7 @@ public class Tokenizer {
         while (matcher_instance.find()) {
             storing.add(matcher_instance.group(0));
         }
+        storing = Filter.filter(storing);
 
         return storing;
     }
