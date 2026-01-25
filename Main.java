@@ -42,7 +42,7 @@ public class Main {
                 
 
                 System.out.println(Tokenizer.tokenizer(output));
-                System.out.printf("=========================");
+                System.out.println("=========================");
                 ERN.put(individual_files, output);
                 // now using tokenizer class to implement tokenization for each of the files in the directory.
 

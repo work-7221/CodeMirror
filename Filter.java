@@ -1,8 +1,6 @@
 package CodeMirror;
 
 import java.util.List;
-// import java.util.ArrayList;
-// import java.util.Collection;
 
 public class Filter {
     public static List<String> filter(List<String> tokens_list){
@@ -20,17 +18,10 @@ public class Filter {
             valuable characters in the token 
 
             */
-        //    if (tokens_list.get(i).contains(" ")) {
-        //         dummy.remove(tokens_list.get(i))   
-        //    }
-        //    if (tokens_list.get(i).contains(" ")) {
-        //        // dummy.remove(tokens_list.get(i));
-        //        System.out.println("yes" + tokens_list.get(i));
-        //    }
 
-            if (tokens_list.get(i).contains(" ")) {
-                dummy.set(i, dummy.get(i).replaceAll("\\s+", ""));
-            }
+            // if (tokens_list.get(i).contains(" ")) {
+            dummy.set(i, dummy.get(i).replaceAll("\\s+", ""));
+            // }
         }      
         return dummy;
     }

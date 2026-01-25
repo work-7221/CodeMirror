@@ -26,6 +26,13 @@ public class Tokenizer {
         }
         storing = Filter.filter(storing);
 
-        return storing;
+        List<String> dummy = storing;
+
+        for (int i = 0; i <storing.size(); i++){
+            if (storing.get(i).length() == 0) {
+                dummy.remove(storing.get(i));
+            }
+    }
+        return dummy;
     }
 }
