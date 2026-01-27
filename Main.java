@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.io.File;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
+
 
 public class Main {
     public static void main(String[] args){
@@ -32,7 +36,7 @@ public class Main {
             
             File[] list_of_files = theFolder.listFiles(); // an array consisting of File instances of the directory where we have stored the files
 
-            HashMap<String, String> ERN = new HashMap<>();
+            HashMap<String, List<String>> ERN = new HashMap<>();
             
             //now getting the hold of the files in the selected directory
             for (File file : list_of_files) {
@@ -40,12 +44,22 @@ public class Main {
                 String individual_files = file.getAbsolutePath(); 
                 String output = Retriever.Extractor(file.getAbsolutePath());
                 
+                List<String> each_file = Tokenizer.tokenizer((output));
 
-                System.out.println(Tokenizer.tokenizer(output));
-                System.out.println("=========================");
-                ERN.put(individual_files, output);
+                List<String> each_file_finalized_output = new ArrayList<>();
+
+                for (String each_token : each_file){
+                    each_file_finalized_output.addAll(Tokenizer_For_Non_W.tokenized_complicated(each_token));
+                }
+
+                ERN.put(individual_files, each_file_finalized_output);
                 // now using tokenizer class to implement tokenization for each of the files in the directory.
-
+                
+            }
+            // System.out.println(ERN);
+            for (Map.Entry<?, ?> entry : ERN.entrySet()) {
+                System.out.printf("%-15s : %s%n", entry.getKey(), entry.getValue());
+                System.out.println("=========================");
             }
         } else {
             System.out.println("File Selection Cancelled.");
