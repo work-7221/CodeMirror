@@ -44,18 +44,34 @@ public class Main {
                 String individual_files = file.getAbsolutePath(); 
                 String output = Retriever.Extractor(file.getAbsolutePath());
                 
-                List<String> each_file = Tokenizer.tokenizer((output));
+                List<String> each_file = Tokenizer.tokenizer((output)); //each file roughly tokenized and stored into a list
 
-                List<String> each_file_finalized_output = new ArrayList<>();
+                List<String> each_file_finalized_output_normalized = new ArrayList<>(); // an empty list which is going to store the finalized tokens
 
-                for (String each_token : each_file){
-                    each_file_finalized_output.addAll(Tokenizer_For_Non_W.tokenized_complicated(each_token));
-                }
-
-                ERN.put(individual_files, each_file_finalized_output);
-                // now using tokenizer class to implement tokenization for each of the files in the directory.
+                if (individual_files.endsWith(".java")){
+                    for (String each_token : each_file){ // each token from each file 
+                        List<String> buffer = Tokenizer_For_Non_W.tokenized_complicated(each_token); // now a we tokenized the non words into into individual non words (";;;\\" --> "; ; ; \ \" )
+                        for (String buffer_token : buffer){
+                            String normalized_token = Normalizer.normalized(buffer_token, "java"); // now each cleand buffer token is stored is now going through normalization process.
+                            each_file_finalized_output_normalized.addAll(Tokenizer_For_Non_W.tokenized_complicated(normalized_token)); //then finally, the [normalized token] is extended into the each_file_finalized_output list. 
+                            }
+                        }
+                    }
                 
-            }
+                if (individual_files.endsWith(".py")){
+                    for (String each_token : each_file){ // each token from each file 
+                        List<String> buffer = Tokenizer_For_Non_W.tokenized_complicated(each_token); // now a we tokenized the non words into into individual non words (";;;\\" --> "; ; ; \ \" )
+                        for (String buffer_token : buffer){
+                            String normalized_token = Normalizer.normalized(buffer_token, "python"); // now each cleand buffer token is stored is now going through normalization process.
+                            each_file_finalized_output_normalized.addAll(Tokenizer_For_Non_W.tokenized_complicated(normalized_token)); //then finally, the [normalized token] is extended into the each_file_finalized_output list. 
+                            }
+                        }
+                    }
+
+                ERN.put(individual_files, each_file_finalized_output_normalized); //we have stored file path and the noramlized files togeteher in a hashmap in the form of key and value pairs.
+                // now using tokenizer class to implement tokenization for each of the files in the directory.
+                //goal is to match the file extension and the suitable tokens with each of the file.
+                }
             // System.out.println(ERN);
             for (Map.Entry<?, ?> entry : ERN.entrySet()) {
                 System.out.printf("%-15s : %s%n", entry.getKey(), entry.getValue());
