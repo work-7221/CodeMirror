@@ -7,9 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.ArrayList;
+import CodeMirror.similarity_commands.similarity_checker;
 
-
-public class Main {
+public class Main{
     public static void main(String[] args){
         System.out.println("Now we proceed to choose the folder where you have the file that you want to check for!!");
         
@@ -77,6 +77,8 @@ public class Main {
                 System.out.printf("%-15s : %s%n", entry.getKey(), entry.getValue());
                 System.out.println("=========================");
             }
+            System.out.println("*******************************************************************************************************************************************************************************");
+            similarity_checker.similarity_function(ERN);
         } else {
             System.out.println("File Selection Cancelled.");
         }
