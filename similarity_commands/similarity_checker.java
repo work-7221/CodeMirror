@@ -42,7 +42,7 @@ public class similarity_checker {
                     //the jaccard similarity of file A with file B tokens is 
                     double Jaccard_Similarity_Score = (A_n/B_n)*100;
 
-                    System.out.println(path + " |+| " + path_inside + " |=| " + A_n + " |&&&| " + B_n);
+                    // System.out.println(path + " |+| " + path_inside + " |=| " + A_n + " |&&&| " + B_n);
                     System.out.println(Jaccard_Similarity_Score);
 
                     System.out.println( "========");
@@ -51,7 +51,6 @@ public class similarity_checker {
             }
             
         }
-
         return 0;
     }
 }
