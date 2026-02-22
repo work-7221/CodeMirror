@@ -82,8 +82,8 @@ public class Main{
             System.out.println("*******************************************************************************************************************************************************************************");
             // similarity_checker.similarity_function(ERN);
             // System.out.println("*******************************************************************************************************************************************************************************");
-            N_gram.hash_iterator(ERN);
-            
+            HashMap<List<String>, Double> final_scores = N_gram.hash_iterator(ERN);
+            Result_producer.Result(final_scores);
         } else {
             System.out.println("File Selection Cancelled.");
         }
