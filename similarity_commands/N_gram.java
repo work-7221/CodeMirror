@@ -54,7 +54,10 @@ public class N_gram {
         return score;
     }
 
-    public static void hash_iterator(HashMap<String, List<String>> hash) { //this method accepts hashmap {<FILE_PATH> : <NORMALIZED_TOKENS>}
+    public static HashMap<List<String>, Double> hash_iterator(HashMap<String, List<String>> hash) { //this method accepts hashmap {<FILE_PATH> : <NORMALIZED_TOKENS>}
+
+        HashMap<List<String>, Double> stored_scores = new HashMap<>();
+
         for(Map.Entry<String, List<String>> entry_a : hash.entrySet()) {
             String path_a = entry_a.getKey();
             List<String> content_a = hash.get(path_a);
@@ -63,12 +66,19 @@ public class N_gram {
                 String path_b = entry_b.getKey();
                 List<String> content_b = hash.get(path_b);
                 if (path_a.endsWith(".java") && path_b.endsWith(".java")){
-                    if (!(content_a == content_b)){ //ensuring that same file doesn't get compared with itself during the nested loop iteration.
+                    if (!path_a.equals(path_b)){ //ensuring that same file doesn't get compared with itself during the nested loop iteration.
+                        // the score between path_a and path_b has been computed till here
                         double score = n_gram_score(content_a, content_b);
-                        System.out.printf("| %-80s | %-80s | %-7.3f |%n",  path_a, path_b, score);
+                        List<String> both_paths = new ArrayList<>();
+                        both_paths.add(path_a);
+                        both_paths.add(path_b);
+                        stored_scores.put(both_paths, score);
                     }
                 }
             }
         }
+
+        return stored_scores;
+
     }
 }
