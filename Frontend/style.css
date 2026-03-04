@@ -1,0 +1,35 @@
+body{
+    background-color:#f0f0f0;
+    font-family: Georgia, serif;
+}
+
+.container{
+    width: 800px;
+    margin: auto;
+    text-align: center;
+}
+
+
+.container_2{
+    display: flex;
+}
+
+.box {
+    padding: 20px;
+}
+
+button:hover {
+    background-color: antiquewhite;
+}
+
+table {
+  width: 100%;           
+  table-layout: fixed;   
+}
+
+
+th, td {
+  border: 1px solid black; 
+  padding: 10px; 
+  text-align: center; 
+}
