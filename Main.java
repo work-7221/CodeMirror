@@ -9,10 +9,11 @@ import java.util.Map;
 import java.util.ArrayList;
 
 import CodeMirror.similarity_commands.N_gram;
-import CodeMirror.similarity_commands.similarity_checker;
+// import CodeMirror.similarity_commands.similarity_checker;
 
 public class Main{
     public static void main(String[] args){
+    // public static void main_method(){
         System.out.println("Now we proceed to choose the folder where you have the file that you want to check for!!");
         
         JFileChooser chooser = new JFileChooser();
@@ -41,8 +42,12 @@ public class Main{
             HashMap<String, List<String>> ERN = new HashMap<>();
             
             //now getting the hold of the files in the selected directory
+
+// till here, i wont have to modify the code
+
             for (File file : list_of_files) {
 
+                // might have to change the code to get the content of the file 
                 String individual_files = file.getAbsolutePath(); 
                 String output = Retriever.Extractor(file.getAbsolutePath());
                 

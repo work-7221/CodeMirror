@@ -7,9 +7,6 @@
     <title>CodeMirror</title>
 
     <link rel="stylesheet" href="style.css">
-    <script src="functionality.js">
-
-    </script>
 </head>
 
 <body>
@@ -22,9 +19,13 @@
             Code Similarity Checker
         </h2>
 
-        <button>
-            Start Similarity: Click to select folder
-        </button>
+        <h2>Upload ZIP File</h2>
+
+        <input type="file" id="zipFile">
+
+        <button onclick="uploadZip()">Upload</button>
+
+        <p id="result"></p>
 
         <h2>
             Results
@@ -39,6 +40,9 @@
         </table>
     </div>
 
+    <script src="functionality.js">
+
+    </script>
 </body>
 
 </html>
