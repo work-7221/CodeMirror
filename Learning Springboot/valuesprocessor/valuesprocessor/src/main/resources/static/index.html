@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Code Similarity Checker</title>
+</head>
+
+<body>
+
+    <h2>Test Spring Boot Connection</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+
+    <button onclick="sendData()">Send</button>
+
+    <p id="result"></p>
+
+    <script>
+
+        function sendData() {
+
+            const name = document.getElementById("name").value;
+
+            fetch("/test?name=" + name)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById("result").innerText = data;
+                });
+
+        }
+
+    </script>
+
+</body>
+
+</html>
