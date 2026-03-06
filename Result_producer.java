@@ -16,12 +16,12 @@ public class Result_producer {
 
             
             if (score > 75.0) {
-                System.out.println("Highly suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
+                System.out.println("Highly suspicious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
             } else if (score > 50.0 && score < 75.0 ) {
-                System.out.println("Mildly suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
+                System.out.println("Mildly suspicious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
 
             } else {
-                System.out.println("Less suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
+                System.out.println("Less suspicious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
 
             }
             // System.out.println(file_a + " ||| " + file_b + " " +score);
