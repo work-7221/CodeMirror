@@ -1,10 +1,10 @@
-package com.codemirror.backend.controller;
+package com.codemirror.Backend.controller;
 
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 
-import com.codemirror.backend.service.SimilarityService;
+import com.codemirror.Backend.service.SimilarityService;
 
 @RestController
 public class UploadController {
