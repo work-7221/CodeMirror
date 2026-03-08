@@ -10,7 +10,7 @@ import com.codemirror.Backend.engine.similarity_commands.N_gram;
 
 public class Main {
 
-    public static void processFolder(String folderPath) {
+    public static List<Result> processFolder(String folderPath) {
 
         File theFolder = new File(folderPath);
         File[] list_of_files = theFolder.listFiles();
@@ -73,6 +73,6 @@ public class Main {
 
         HashMap<List<String>, Double> final_scores = N_gram.hash_iterator(ERN);
 
-        Result_producer.Result(final_scores);
+        return Result_producer.Result(final_scores);
     }
 }

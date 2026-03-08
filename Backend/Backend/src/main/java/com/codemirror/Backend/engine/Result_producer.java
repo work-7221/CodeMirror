@@ -1,33 +1,28 @@
 package com.codemirror.Backend.engine;
 
-
 import java.util.*;
+import java.io.File;
+
+// import java.util.ArrayList;
 
 public class Result_producer {
-    public static String Result(HashMap<List<String>, Double> hash) {
 
-        for (Map.Entry<List<String>, Double> score_key : hash.entrySet()) {
+    public static List<Result> Result(HashMap<List<String>, Double> final_scores) {
 
-            List<String> stored_paths = score_key.getKey();
+        List<Result> results = new ArrayList<>();
 
-            double score = hash.get(stored_paths);
+        for (Map.Entry<List<String>, Double> entry : final_scores.entrySet()) {
 
-            String file_a = (stored_paths).get(0);
-            String file_b = (stored_paths).get(1);
+            List<String> files = entry.getKey();
+            double score = entry.getValue();
 
-            
-            if (score > 75.0) {
-                System.out.println("Highly suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
-            } else if (score > 50.0 && score < 75.0 ) {
-                System.out.println("Mildly suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
+            String file1 = new File(files.get(0)).getName();
+            String file2 = new File(files.get(1)).getName();
 
-            } else {
-                System.out.println("Less suspecious! " +  file_a +" matches with "+ file_b + " by " + score+"%");
+            results.add(new Result(file1, file2, score));
 
-            }
-            // System.out.println(file_a + " ||| " + file_b + " " +score);
         }
 
-        return "";
+        return results;
     }
 }

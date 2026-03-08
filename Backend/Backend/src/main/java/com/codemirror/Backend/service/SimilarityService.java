@@ -1,47 +1,41 @@
 package com.codemirror.Backend.service;
 
 import com.codemirror.Backend.engine.Main;
+import com.codemirror.Backend.engine.Result;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.*;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
 @Service
 public class SimilarityService {
 
-    public String processZip(MultipartFile file) {
+    public List<Result> processZip(MultipartFile file) {
 
         try {
 
-            File tempZip = new File("temp.zip");
-            FileOutputStream fos = new FileOutputStream(tempZip);
+            File zipFile = new File("upload.zip");
+
+            FileOutputStream fos = new FileOutputStream(zipFile);
             fos.write(file.getBytes());
             fos.close();
 
-            System.out.println("ZIP received and saved");
-
-            // extracting the content of the folde
             File extractDir = new File("extracted");
-            if (!extractDir.exists()) {
-                extractDir.mkdir();
-            }
+            extractDir.mkdir();
 
-            unzip(tempZip, extractDir);
+            unzip(zipFile, extractDir);
 
-            System.out.println("ZIP extracted.");
+            List<Result> results = Main.processFolder(extractDir.getAbsolutePath());
 
-            Main.processFolder(extractDir.getAbsolutePath());
-
-            return "Similarity analysis completed";
-
-            // next step: unzip + run engine
+            return results;
 
         } catch (Exception e) {
             e.printStackTrace();
-            return "error reading this file";
+            return new ArrayList<>();
         }
     }
 

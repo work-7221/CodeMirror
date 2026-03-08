@@ -1,8 +1,10 @@
 package com.codemirror.Backend.controller;
 
+import java.util.List;
+
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
+import com.codemirror.Backend.engine.Result;
 
 import com.codemirror.Backend.service.SimilarityService;
 
@@ -16,7 +18,7 @@ public class UploadController {
     }
 
     @PostMapping("/upload")
-    public String upload(@RequestParam("file") MultipartFile file){
+    public List<Result> upload(@RequestParam("file") MultipartFile file){
 
         return similarityService.processZip(file);
 
