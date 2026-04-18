@@ -18,17 +18,29 @@ public class SimilarityService {
 
         try {
 
+            // 🔥 STEP 1: Delete old files
             File zipFile = new File("upload.zip");
+            if (zipFile.exists()) {
+                zipFile.delete();
+            }
 
+            File extractDir = new File("extracted");
+            if (extractDir.exists()) {
+                deleteDirectory(extractDir);
+            }
+
+            // 🔥 STEP 2: Save new zip
             FileOutputStream fos = new FileOutputStream(zipFile);
             fos.write(file.getBytes());
             fos.close();
 
-            File extractDir = new File("extracted");
+            // 🔥 STEP 3: Create fresh folder
             extractDir.mkdir();
 
+            // 🔥 STEP 4: Unzip
             unzip(zipFile, extractDir);
 
+            // 🔥 STEP 5: Process
             List<Result> results = Main.processFolder(extractDir.getAbsolutePath());
 
             return results;
@@ -37,6 +49,15 @@ public class SimilarityService {
             e.printStackTrace();
             return new ArrayList<>();
         }
+    }
+
+    private void deleteDirectory(File dir) {
+        if (dir.isDirectory()) {
+            for (File file : dir.listFiles()) {
+                deleteDirectory(file);
+            }
+        }
+        dir.delete();
     }
 
     private void unzip(File zipFile, File destDir) throws IOException {
