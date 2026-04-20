@@ -15,11 +15,10 @@ async function uploadZip() {
 
     const tableBody = document.getElementById("resultTable");
 
-    // Clear old results (important)
     tableBody.innerHTML = "";
     const summaryMap = {};
 
-    // Build summary
+    // summary
     data.forEach(r => {
         const f1 = r.file1;
         const f2 = r.file2;

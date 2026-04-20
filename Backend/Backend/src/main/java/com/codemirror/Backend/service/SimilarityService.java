@@ -18,7 +18,6 @@ public class SimilarityService {
 
         try {
 
-            // 🔥 STEP 1: Delete old files
             File zipFile = new File("upload.zip");
             if (zipFile.exists()) {
                 zipFile.delete();
@@ -29,15 +28,12 @@ public class SimilarityService {
                 deleteDirectory(extractDir);
             }
 
-            // 🔥 STEP 2: Save new zip
             FileOutputStream fos = new FileOutputStream(zipFile);
             fos.write(file.getBytes());
             fos.close();
 
-            // 🔥 STEP 3: Create fresh folder
             extractDir.mkdir();
 
-            // 🔥 STEP 4: Unzip
             unzip(zipFile, extractDir);
 
             // 🔥 STEP 5: Process
