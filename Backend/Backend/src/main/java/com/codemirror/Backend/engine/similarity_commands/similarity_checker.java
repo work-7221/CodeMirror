@@ -1,4 +1,4 @@
-package CodeMirror.similarity_commands;
+package com.codemirror.Backend.engine.similarity_commands;
 
 import java.util.*;
 

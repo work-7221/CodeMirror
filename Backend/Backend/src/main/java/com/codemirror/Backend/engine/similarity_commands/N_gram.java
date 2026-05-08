@@ -1,4 +1,4 @@
-package CodeMirror.similarity_commands;
+package com.codemirror.Backend.engine.similarity_commands;
 import java.util.*;
 
 public class N_gram {
@@ -35,7 +35,7 @@ public class N_gram {
         for (List<String> each: B_L) {
             B.add(each);
         }
-
+        
         // finding the intersection.
         Set<List<String>> intersection = new HashSet<List<String>>(A); 
         intersection.retainAll(B);

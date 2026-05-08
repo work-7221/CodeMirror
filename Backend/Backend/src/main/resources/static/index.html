@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeMirror</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="container">
+
+            <h1>Code Similarity Checker</h1>
+            <p class="subtitle">Upload files and compare code similarity</p>
+
+            <div class="card">
+                <h2>Upload ZIP File</h2>
+                <input type="file" id="zipFile">
+                <button onclick="uploadZip()">Upload & Check</button>
+                <p id="result"></p>
+            </div>
+            <div class="card">
+                <h2>Summary</h2>
+                <div id="summaryList" class="summary-container"></div>
+            </div>
+            <div class="card">
+                <h2>Results</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>File 1</th>
+                            <th>File 2</th>
+                            <th>Similarity</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultTable"></tbody>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="loader" class="loader-hidden">
+            <div class="loader-box">
+                <div class="spinner"></div>
+                <p>Processing files...</p>
+            </div>
+        </div>
+        <script src="functionality.js">
+
+        </script>
+</body>
+
+</html>
