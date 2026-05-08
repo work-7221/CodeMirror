@@ -133,18 +133,18 @@ Through this project, I learned:
 
 ## Screenshots
 ### Initial Interface
-![Output](screenshots/ss1.png)
+![Output](Screenshots/ss1.png)
 ### Zip FIle Is Selected And Sent For Processing
-![Output](screenshots/ss2.png)
+![Output](Screenshots/ss2.png)
 ### Summary Table Produced
-![Output](screenshots/ss3.png)
+![Output](Screenshots/ss3.png)
 ### All Comparisons Made
-![Output](screenshots/ss4.png)
+![Output](Screenshots/ss4.png)
 
 ---
 
 ## Run Locally
 
 ```bash
-git clone <repo-link>
+git clone https://github.com/work-7221/CodeMirror.git
 cd CodeMirror
